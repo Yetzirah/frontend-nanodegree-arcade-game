@@ -1,17 +1,3 @@
-const START_STATUS = 'start';
-const PAUSE_STATUS = 'pause';
-const POSINIT_ENEMY_X = -100;
-const POSINIT_PLAYER_X = 200;
-const POSINIT_PLAYER_Y = 400;
-const LIMIT_ENEMY = 500;
-const LIMIT_PLAYER_RIGHT = 0;
-const LIMIT_PLAYER_LEFT = 400;
-const LIMIT_PLAYER_TOP = 0;
-const LIMIT_PLAYER_BOTTON = 400;
-const STEP_PLAYER = 100;
-const LIMIT_TOP_SPACE_DAMAGE = 0;
-const LIMIT_BOTTON_SPACE_DAMAGE = 200;
-const RANGE_COLLISION = 50;
 
 class Enemy {
     constructor (x, y, dt) {
@@ -48,7 +34,7 @@ class Player {
     update() {
     }
     restart(posX, posY) {
-        if (posX === parseInt(posX) && posY === parseInt(posY)) {
+        if (Number.isInteger(posX) && Number.isInteger(posY)) {
             if ((this.x >= posX - RANGE_COLLISION && this.x <= posX + RANGE_COLLISION) && (this.y >= posY - RANGE_COLLISION && this.y <= posY + RANGE_COLLISION)) {
                 document.getElementById('score').textContent = score;
                 if (document.getElementById('game-over').className.match('invisible')) {
