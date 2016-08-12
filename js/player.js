@@ -12,10 +12,10 @@ class Player {
     restart(posX, posY) {
         if (Number.isInteger(posX) && Number.isInteger(posY)) {
             if ((this.x >= posX - RANGE_COLLISION && this.x <= posX + RANGE_COLLISION) && (this.y >= posY - RANGE_COLLISION && this.y <= posY + RANGE_COLLISION)) {
-                showScore(score);
+                showScore(game.score);
                 replaceClass('game-over', 'visible', 'invisible');
                 game.gameStatus = PAUSE_STATUS;
-                score = 0;
+                game.score = 0;
             }
         }
         else {
@@ -62,7 +62,7 @@ class Player {
     }
     update_score(){
         if ((this.y >= LIMIT_TOP_SPACE_DAMAGE && this.y <= LIMIT_BOTTON_SPACE_DAMAGE)) {
-            score += 1;
+            game.score += 1;
         }
     }
 }
