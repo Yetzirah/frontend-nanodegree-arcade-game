@@ -1,4 +1,5 @@
 const player = new Player(POSINIT_PLAYER_X, POSINIT_PLAYER_Y);
+let score = 0;
 let allEnemies = [];
 const numEnemies = 3;
 for (let i = 0; i < numEnemies; i++) {
@@ -7,8 +8,7 @@ for (let i = 0; i < numEnemies; i++) {
     allEnemies.push(enemy);
 }
 
-let score = 0;
-let gameStatus = START_STATUS;
+const game = new Game(START_STATUS);
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {

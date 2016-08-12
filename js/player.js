@@ -14,7 +14,7 @@ class Player {
             if ((this.x >= posX - RANGE_COLLISION && this.x <= posX + RANGE_COLLISION) && (this.y >= posY - RANGE_COLLISION && this.y <= posY + RANGE_COLLISION)) {
                 showScore(score);
                 replaceClass('game-over', 'visible', 'invisible');
-                setStatusGame(PAUSE_STATUS);
+                game.gameStatus = PAUSE_STATUS;
                 score = 0;
             }
         }
@@ -26,33 +26,33 @@ class Player {
     handleInput(key) {
         switch (key) {
             case 'left': {
-                if (this.x > LIMIT_PLAYER_RIGHT && !isPause(gameStatus)) {
+                if (this.x > LIMIT_PLAYER_RIGHT && !game.isPause()) {
                     this.x -= STEP_PLAYER;
                 }
                 break;
             }
             case 'up': {
-                if (this.y > LIMIT_PLAYER_TOP && !isPause(gameStatus)) {
+                if (this.y > LIMIT_PLAYER_TOP && !game.isPause()) {
                     this.y -= STEP_PLAYER;
                     player.update_score();
                 }
                 break;
             }
             case 'right': {
-                if (this.x < LIMIT_PLAYER_LEFT && !isPause(gameStatus)) {
+                if (this.x < LIMIT_PLAYER_LEFT && !game.isPause()) {
                     this.x += STEP_PLAYER;
                 }
                 break;
             }
             case 'down': {
-                if (this.y < LIMIT_PLAYER_BOTTON && !isPause(gameStatus)) {
+                if (this.y < LIMIT_PLAYER_BOTTON && !game.isPause()) {
                     this.y += STEP_PLAYER;
                     player.update_score();
                 }
                 break;
             }
             case 'space-bar': {
-                setStatusGame(START_STATUS);
+                game.gameStatus = START_STATUS;
                 this.x = POSINIT_PLAYER_X;
                 this.y = POSINIT_PLAYER_Y;
                 replaceClass('game-over', 'invisible', 'visible');
