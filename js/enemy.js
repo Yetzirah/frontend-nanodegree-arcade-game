@@ -1,9 +1,10 @@
 class Enemy {
-    constructor (x, y, dt) {
+    constructor (x, y, dt, player) {
         this.sprite = "images/enemy-bug.png";
         this.dt = dt;
         this.x = x;
         this.y = y;
+        this.player = player;
     }
     update() {
         if (this.x >= LIMIT_ENEMY) {
@@ -12,8 +13,8 @@ class Enemy {
         }
         if (!game.isPause()) {
             this.x += this.dt;
-            player.restart(this.x, this.y);
-            player.render();
+            this.player.restart(this.x, this.y);
+            this.player.render();
         }
     }
     render() {

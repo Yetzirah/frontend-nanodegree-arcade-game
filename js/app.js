@@ -1,12 +1,12 @@
-const player = new Player(POSINIT_PLAYER_X, POSINIT_PLAYER_Y);
+let game = new Game(START_STATUS, 0);
+let player = new Player(POSINIT_PLAYER_X, POSINIT_PLAYER_Y, game);
 let allEnemies = [];
 const numEnemies = 3;
 for (let i = 0; i < numEnemies; i++) {
     const vel = Math.floor((Math.random() * 10) + 1);
-    const enemy = new Enemy(POSINIT_ENEMY_X, 100 * i, vel);
+    const enemy = new Enemy(POSINIT_ENEMY_X, 100 * i, vel, player);
     allEnemies.push(enemy);
 }
-const game = new Game(START_STATUS, 0);
 
 document.addEventListener('keyup', function(e) {
     const allowedKeys = {
