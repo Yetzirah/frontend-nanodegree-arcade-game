@@ -11,7 +11,7 @@ class Enemy {
             this.x = POSINIT_ENEMY_X;
             this.dt = Math.floor((Math.random() * 10) + 1);
         }
-        if (!game.isPause()) {
+        if (!this.player.game.isPause()) {
             this.x += this.dt;
             this.player.restart(this.x, this.y);
             this.player.render();
